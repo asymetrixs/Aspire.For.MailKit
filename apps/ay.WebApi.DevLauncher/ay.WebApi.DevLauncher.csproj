@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Sdk Name="Aspire.AppHost.Sdk" Version="9.3.0"/>
+
+    <PropertyGroup>
+        <Title>Development Launcher</Title>
+        <Description>Integration of MailKit with Aspire.</Description>
+        <Authors>Damian Wolgast</Authors>
+        <Copyright>Copyright © Damian Wolgast 2025</Copyright>
+        <Version>0.1.0</Version>
+        <AssemblyVersion>0.1.0</AssemblyVersion>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Configurations>Debug;Release</Configurations>
+        <LangVersion>latest</LangVersion>
+        <AppOutputBase>$(MSBuildProjectDirectory)\</AppOutputBase>
+        <PathMap>$(AppOutputBase)=$(MSBuildProjectName)/</PathMap>
+        <OutputType>Exe</OutputType>
+        <UserSecretsId>ce53f8ad-9e8f-4011-9e73-80dca9e275c2</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aspire.Hosting.AppHost" Version="9.3.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\libs\ay.Aspire.For.MailKit\ay.Aspire.For.MailKit.csproj" IsAspireProjectResource="false" />
+        <ProjectReference Include="..\ay.PoC.WebApi\ay.PoC.WebApi.csproj" />
+    </ItemGroup>
+
+</Project>

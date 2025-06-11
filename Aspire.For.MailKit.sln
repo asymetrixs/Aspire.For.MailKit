@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ay.PoC.WebApi", "apps\ay.PoC.WebApi\ay.PoC.WebApi.csproj", "{57B5E178-0F01-447C-8587-5EFEC0CD8ECC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apps", "apps", "{51E3CD66-8B84-4F01-A0DE-DE3AEEEF884D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{6F3C878F-C063-40E5-96B0-544B3163ED39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ay.Aspire.For.MailKit", "libs\ay.Aspire.For.MailKit\ay.Aspire.For.MailKit.csproj", "{8D836882-94BF-42D1-B96F-DEF9626F3ED7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ay.WebApi.DevLauncher", "apps\ay.WebApi.DevLauncher\ay.WebApi.DevLauncher.csproj", "{0E2E6705-4784-4AE0-99E2-C921AD6E0E7A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_misc", "_misc", "{44901FD8-5A21-4F92-8B70-2191E2D7E4A5}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		LICENSE = LICENSE
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57B5E178-0F01-447C-8587-5EFEC0CD8ECC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57B5E178-0F01-447C-8587-5EFEC0CD8ECC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57B5E178-0F01-447C-8587-5EFEC0CD8ECC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57B5E178-0F01-447C-8587-5EFEC0CD8ECC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D836882-94BF-42D1-B96F-DEF9626F3ED7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D836882-94BF-42D1-B96F-DEF9626F3ED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D836882-94BF-42D1-B96F-DEF9626F3ED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D836882-94BF-42D1-B96F-DEF9626F3ED7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E2E6705-4784-4AE0-99E2-C921AD6E0E7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E2E6705-4784-4AE0-99E2-C921AD6E0E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E2E6705-4784-4AE0-99E2-C921AD6E0E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E2E6705-4784-4AE0-99E2-C921AD6E0E7A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{57B5E178-0F01-447C-8587-5EFEC0CD8ECC} = {51E3CD66-8B84-4F01-A0DE-DE3AEEEF884D}
+		{8D836882-94BF-42D1-B96F-DEF9626F3ED7} = {6F3C878F-C063-40E5-96B0-544B3163ED39}
+		{0E2E6705-4784-4AE0-99E2-C921AD6E0E7A} = {51E3CD66-8B84-4F01-A0DE-DE3AEEEF884D}
+	EndGlobalSection
+EndGlobal

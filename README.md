@@ -33,3 +33,25 @@ In your client that is hosted by Aspire, integrate like so:
 ```csharp
 builder.AddMailKitClient("maildev");
 ```
+
+
+Then inject the `MailKitClientFactory` like so into your controller or service:
+
+```csharp
+app.MapPost("/subscribe",
+    async (MailKitClientFactory factory, string email) =>
+    {
+        ISmtpClient client = await factory.GetSmtpClientAsync();
+
+        using var message = new MailMessage("newsletter@yourcompany.com", email)
+        {
+            Subject = "Welcome to our newsletter!",
+            Body = "Thank you for subscribing to our newsletter!"
+        };
+
+        await client.SendAsync(MimeMessage.CreateFromMailMessage(message));
+    });
+
+```
+
+And create your `ISmtpClient` to send an email.

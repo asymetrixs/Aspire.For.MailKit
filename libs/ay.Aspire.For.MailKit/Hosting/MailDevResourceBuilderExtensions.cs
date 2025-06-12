@@ -51,5 +51,5 @@ internal static class MailDevContainerImageTags
 
     internal const string Image = "maildev/maildev";
 
-    internal const string Tag = "2.1.0";
+    internal const string Tag = "2.2.1";
 }

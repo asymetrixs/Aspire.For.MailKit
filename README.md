@@ -1,6 +1,7 @@
 # ay.Aspire.For.MailKit
 
-This project implements [Create custom .NET Aspire hosting integrations](https://learn.microsoft.com/en-us/dotnet/aspire/extensibility/custom-hosting-integration)
+This project
+implements [Create custom .NET Aspire hosting integrations](https://learn.microsoft.com/en-us/dotnet/aspire/extensibility/custom-hosting-integration)
 and hooks up Aspire with MailKit as described.
 
 ## Integration
@@ -8,8 +9,10 @@ and hooks up Aspire with MailKit as described.
 To integrate MailKit with Aspire use the following example.
 The integration will spin up a MailDev container where you will receive your emails.
 
-The connection string is stored under 'ConnectionString:SmtpServer', either by using MailKit and environment variables or by configuring it in the `appsettings.json`.
-During the use of Aspire, the connection string will be provided in the environment variable `ConnectionString__SmtpServer` by Aspire.
+The connection string is stored under 'ConnectionString:SmtpServer', either by using MailKit and environment variables
+or by configuring it in the `appsettings.json`.
+During the use of Aspire, the connection string will be provided in the environment variable
+`ConnectionString__SmtpServer` by Aspire.
 
 ### Hosting
 
@@ -28,15 +31,13 @@ builder.Build().Run();
 
 ```
 
-
 ### Client
 
-In your client that is hosted by Aspire, integrate like so:
+In your client hosted by Aspire, integrate like so:
 
 ```csharp
 builder.AddMailKitClient("SmtpServer");
 ```
-
 
 Then inject the `MailKitClientFactory` like so into your controller or service:
 
@@ -63,16 +64,45 @@ app.MapPost("/subscribe",
 
 And create your `ISmtpClient` to send an email.
 
-
-To configure a real SMTP server use
+To configure the connection to the SMTP server use
 
 ```json
 {
   ...
   "ConnectionStrings": {
-    "SmtpServer": "smtp.example.com:587",
-    "...": "..."
+    "SmtpServer": "Endpoint=smtp://smtp.example.com:587;Username=foo;Password=bar;DisableHealthChecks=true;DisableTracing=true;DisableMetrics=true",
   },
+  ...
+}
+```
+
+In case you only have an endpoint without authentication, you can shorten it to
+
+```json
+{
+  ...
+  "ConnectionStrings": {
+    "SmtpServer": "smtp://smtp.example.com:587",
+  },
+  ...
+}
+```
+
+Alternatively use MailKit settings, but note that a ConnectionString will override the MailKit settings. 
+
+```json
+{
+  ...
+  "MailKit": {
+    "Client": {
+      "Endpoint": "smtp://smtp.example.com:587",
+      "Username": "foo",
+      "Password": "bar",
+      "DisableHealthChecks": true,
+      "DisableTracing": true,
+      "DisableMetrics": true
+    }
+  }
   ...
 }
 ```

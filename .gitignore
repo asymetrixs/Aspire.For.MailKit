@@ -268,3 +268,6 @@ __pycache__/
 
 # Mac
 **/.DS_Store
+
+# Development Appsettings
+**/appsettings.Development.json

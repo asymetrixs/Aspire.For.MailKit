@@ -3,6 +3,8 @@ using ay.Aspire.For.MailKit.Client;
 using MailKit.Net.Smtp;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Configuration;
 
 namespace Microsoft.Extensions.Hosting;
 
@@ -98,9 +100,13 @@ public static class MailKitExtensions
             builder.Services.AddKeyedScoped(serviceKey, (sp, key) => CreateMailKitClientFactory(sp));
         }
 
-        MailKitClientFactory CreateMailKitClientFactory(IServiceProvider _)
+        MailKitClientFactory CreateMailKitClientFactory(IServiceProvider serviceProvider)
         {
-            return new MailKitClientFactory(settings);
+            var logger = serviceProvider
+                .GetRequiredService<ILoggerFactory>()
+                .CreateLogger<MailKitClientFactory>();
+
+            return new MailKitClientFactory(settings, logger);
         }
 
         if (settings.DisableHealthChecks is false)

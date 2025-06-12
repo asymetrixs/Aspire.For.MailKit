@@ -1,13 +1,14 @@
 using System.Net.Mail;
 using ay.Aspire.For.MailKit.Client;
 using MailKit.Net.Smtp;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using MimeKit;
 
 namespace ay.PoC.WebApi;
 
 public static class Program
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +24,7 @@ public static class Program
         builder.Services.AddSwaggerGen();
 
         // Add services to the container.
-        builder.AddMailKitClient("maildev");
+        builder.AddMailKitClient("SmtpServer");
 
         var app = builder.Build();
 
@@ -42,7 +43,7 @@ public static class Program
         app.MapPost("/subscribe",
             async (MailKitClientFactory factory, string email) =>
             {
-                ISmtpClient client = await factory.GetSmtpClientAsync();
+                var client = await factory.GetSmtpClientAsync();
 
                 using var message = new MailMessage("newsletter@yourcompany.com", email)
                 {
@@ -56,7 +57,7 @@ public static class Program
         app.MapPost("/unsubscribe",
             async (MailKitClientFactory factory, string email) =>
             {
-                ISmtpClient client = await factory.GetSmtpClientAsync();
+                var client = await factory.GetSmtpClientAsync();
 
                 using var message = new MailMessage("newsletter@yourcompany.com", email)
                 {
@@ -67,6 +68,8 @@ public static class Program
                 await client.SendAsync(MimeMessage.CreateFromMailMessage(message));
             });
 
-        app.Run();
+        app.MapHealthChecks("/healthz");
+
+        await app.RunAsync();
     }
 }

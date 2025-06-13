@@ -8,8 +8,9 @@
         <PackageId>ay.Aspire.For.MailKit</PackageId>
         <Authors>Damian Wolgast</Authors>
         <Copyright>Copyright © Damian Wolgast 2025</Copyright>
-        <Version>0.4.0</Version>
-        <AssemblyVersion>0.4.0</AssemblyVersion>
+        <PackageTags>aspire;mailkit;integration;component;mail</PackageTags>
+        <Version>0.4.1</Version>
+        <AssemblyVersion>0.4.1</AssemblyVersion>
         <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>

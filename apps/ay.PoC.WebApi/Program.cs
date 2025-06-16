@@ -43,7 +43,8 @@ public static class Program
         app.MapPost("/subscribe",
             async (MailKitClientFactory factory, string email) =>
             {
-                var client = await factory.GetSmtpClientAsync();
+                // using
+                using var client = await factory.GetSmtpClientAsync();
 
                 using var message = new MailMessage("newsletter@yourcompany.com", email)
                 {
@@ -51,12 +52,17 @@ public static class Program
                     Body = "Thank you for subscribing to our newsletter!"
                 };
 
+                // Send the message
                 await client.SendAsync(MimeMessage.CreateFromMailMessage(message));
+
+                // Disconnect properly
+                await client.DisconnectAsync(true);
             });
 
         app.MapPost("/unsubscribe",
             async (MailKitClientFactory factory, string email) =>
             {
+                // Without using, call .Dispose()
                 var client = await factory.GetSmtpClientAsync();
 
                 using var message = new MailMessage("newsletter@yourcompany.com", email)
@@ -65,7 +71,14 @@ public static class Program
                     Body = "Sorry to see you go. We hope you will come back soon!"
                 };
 
+                // Send the message
                 await client.SendAsync(MimeMessage.CreateFromMailMessage(message));
+
+                // Disconnect properly
+                await client.DisconnectAsync(true);
+
+                // Dispose instance
+                client.Dispose();
             });
 
         app.MapHealthChecks("/healthz");

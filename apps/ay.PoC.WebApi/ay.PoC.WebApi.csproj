@@ -5,8 +5,8 @@
         <Description>Integration of MailKit with Aspire in a WebApi as example.</Description>
         <Authors>Damian Wolgast</Authors>
         <Copyright>Copyright © Damian Wolgast 2025</Copyright>
-        <Version>0.2.1</Version>
-        <AssemblyVersion>0.2.1</AssemblyVersion>
+        <Version>0.4.2</Version>
+        <AssemblyVersion>0.4.2</AssemblyVersion>
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>

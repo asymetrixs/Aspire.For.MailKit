@@ -39,7 +39,9 @@ In your client hosted by Aspire, integrate like so:
 builder.AddMailKitClient("SmtpServer");
 ```
 
-Then inject the `MailKitClientFactory` like so into your controller or service:
+Then inject the `MailKitClientFactory` like so into your controller or service. The factory will create an `SmtpClient`
+instance that already authenticated to the server if the server supports authentication and if the username is not empty.
+Make sure that you **dispose** the `SmtpClient` instance properly by using `using` or by calling `.Dispose()` on the instance.
 
 ```csharp
 app.MapPost("/subscribe",
@@ -52,9 +54,6 @@ app.MapPost("/subscribe",
         };
 
         using var client = await factory.GetSmtpClientAsync();
-        
-        // Optionally authenticate but store these values somewhere safe.
-        await client.AuthenticateAsync("someusername", "somepassword");
         
         await client.SendAsync(MimeMessage.CreateFromMailMessage(message));
         await client.DisconnectAsync(true);

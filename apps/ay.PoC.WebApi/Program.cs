@@ -46,11 +46,9 @@ public static class Program
                 // using
                 using var client = await factory.GetSmtpClientAsync();
 
-                using var message = new MailMessage("newsletter@yourcompany.com", email)
-                {
-                    Subject = "Welcome to our newsletter!",
-                    Body = "Thank you for subscribing to our newsletter!"
-                };
+                using var message = new MailMessage("newsletter@yourcompany.com", email);
+                message.Subject = "Welcome to our newsletter!";
+                message.Body = "Thank you for subscribing to our newsletter!";
 
                 // Send the message
                 await client.SendAsync(MimeMessage.CreateFromMailMessage(message));
@@ -65,11 +63,9 @@ public static class Program
                 // Without using, call .Dispose()
                 var client = await factory.GetSmtpClientAsync();
 
-                using var message = new MailMessage("newsletter@yourcompany.com", email)
-                {
-                    Subject = "You are unsubscribed from our newsletter!",
-                    Body = "Sorry to see you go. We hope you will come back soon!"
-                };
+                using var message = new MailMessage("newsletter@yourcompany.com", email);
+                message.Subject = "You are unsubscribed from our newsletter!";
+                message.Body = "Sorry to see you go. We hope you will come back soon!";
 
                 // Send the message
                 await client.SendAsync(MimeMessage.CreateFromMailMessage(message));

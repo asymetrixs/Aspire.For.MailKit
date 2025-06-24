@@ -9,8 +9,8 @@
         <Authors>Damian Wolgast</Authors>
         <Copyright>Copyright © Damian Wolgast 2025</Copyright>
         <PackageTags>aspire;mailkit;integration;component;mail</PackageTags>
-        <Version>0.4.2</Version>
-        <AssemblyVersion>0.4.2</AssemblyVersion>
+        <Version>1.0.0</Version>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
         <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
